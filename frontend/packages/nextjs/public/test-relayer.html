@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Relayer SDK</title>
+</head>
+<body>
+  <h1>Testing Relayer SDK Loading</h1>
+  <div id="status">Loading...</div>
+
+  <script>
+    console.log('[Test] Starting...');
+    console.log('[Test] window.relayerSDK before:', window.relayerSDK);
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.zama.ai/relayer-sdk-js/0.2.0/relayer-sdk-js.umd.cjs';
+    script.type = 'text/javascript';
+    script.async = true;
+
+    script.onload = () => {
+      console.log('[Test] Script loaded!');
+      console.log('[Test] window.relayerSDK after:', window.relayerSDK);
+      console.log('[Test] window object keys:', Object.keys(window).filter(k => k.includes('relayer') || k.includes('SDK') || k.includes('fhe')));
+
+      document.getElementById('status').innerHTML =
+        'Script loaded. Check console for window.relayerSDK';
+    };
+
+    script.onerror = (e) => {
+      console.error('[Test] Script failed to load:', e);
+      document.getElementById('status').innerHTML = 'Error loading script';
+    };
+
+    document.head.appendChild(script);
+  </script>
+</body>
+</html>
