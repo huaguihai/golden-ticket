@@ -18,7 +18,21 @@
 
 ---
 
-[Live Demo](#) | [Documentation](./frontend/README.md) | [Contracts](./backend/contracts)
+[Live Demo](https://golden-ticket-beryl.vercel.app/) | [Documentation](./frontend/README.md) | [Contracts](./backend/contracts)
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### Landing Page
+![Golden Ticket Home](./demo_home.png)
+
+### DApp Dashboard
+![Golden Ticket DApp](./demo_dapp.png)
 
 </div>
 

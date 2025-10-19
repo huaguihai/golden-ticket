@@ -18,7 +18,21 @@
 
 ---
 
-[在线演示](#) | [技术文档](./frontend/README.md) | [智能合约](./backend/contracts)
+[在线演示](https://golden-ticket-beryl.vercel.app/) | [技术文档](./frontend/README.md) | [智能合约](./backend/contracts)
+
+</div>
+
+---
+
+## 📸 项目截图
+
+<div align="center">
+
+### 首页展示
+![Golden Ticket 首页](./demo_home.png)
+
+### DApp 仪表板
+![Golden Ticket DApp](./demo_dapp.png)
 
 </div>
 
