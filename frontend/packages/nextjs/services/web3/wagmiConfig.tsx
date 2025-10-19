@@ -3,7 +3,7 @@ import { Chain, createClient, fallback, http } from "viem";
 import { hardhat, mainnet } from "viem/chains";
 import { createConfig } from "wagmi";
 import scaffoldConfig, { ScaffoldConfig } from "~~/scaffold.config";
-import { getAlchemyHttpUrl } from "~~/utils/helper";
+import { getAlchemyHttpUrl, getInfuraHttpUrl } from "~~/utils/helper";
 
 const { targetNetworks } = scaffoldConfig;
 
@@ -23,8 +23,15 @@ export const wagmiConfig = createConfig({
       rpcFallbacks = [http(rpcOverrideUrl), http()];
     } else {
       const alchemyHttpUrl = getAlchemyHttpUrl(chain.id);
+      const infuraHttpUrl = getInfuraHttpUrl(chain.id);
+
+      // Priority: Alchemy > Infura > Public RPC
       if (alchemyHttpUrl) {
-        rpcFallbacks = [http(alchemyHttpUrl), http()];
+        rpcFallbacks = infuraHttpUrl
+          ? [http(alchemyHttpUrl), http(infuraHttpUrl), http()]
+          : [http(alchemyHttpUrl), http()];
+      } else if (infuraHttpUrl) {
+        rpcFallbacks = [http(infuraHttpUrl), http()];
       }
     }
     return createClient({

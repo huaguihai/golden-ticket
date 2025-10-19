@@ -49,14 +49,22 @@ Install Command: pnpm install
 
 #### Environment Variables（环境变量）
 
-添加以下环境变量（可选）：
+添加以下环境变量（**推荐配置以提升稳定性**）：
 
 | 变量名 | 值 | 说明 |
 |-------|-----|------|
-| `NEXT_PUBLIC_ALCHEMY_API_KEY` | 你的 Alchemy Key | 可选，提升 RPC 稳定性 |
+| `NEXT_PUBLIC_ALCHEMY_API_KEY` | 你的 Alchemy Key | **推荐**，提升 RPC 稳定性和速度 |
+| `NEXT_PUBLIC_INFURA_API_KEY` | 你的 Infura Key | **推荐**，作为备用 RPC 提供冗余 |
 | `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` | 你的 WalletConnect ID | 可选，WalletConnect 支持 |
 
-> 💡 **提示**: 这些都是可选的。不填写也可以正常部署，会使用公共 RPC。
+**获取 API Keys：**
+- **Alchemy**: https://dashboard.alchemyapi.io （免费每月 300M 请求）
+- **Infura**: https://infura.io （免费每天 10万请求）
+
+> 💡 **重要提示**:
+> - 不填写 API Key 也可以部署，但会使用不稳定的公共 RPC，可能导致交易验证失败
+> - 建议至少配置 Alchemy 或 Infura 其中一个，配置两个可获得最佳稳定性
+> - RPC 优先级：Alchemy > Infura > 公共 RPC
 
 ### 步骤 3: 部署
 
@@ -262,8 +270,9 @@ Vercel 会自动检测并重新部署！
 ### 环境变量示例
 
 ```bash
-# Alchemy API Key（可选）
+# RPC Providers（推荐配置至少一个）
 NEXT_PUBLIC_ALCHEMY_API_KEY=your_alchemy_api_key
+NEXT_PUBLIC_INFURA_API_KEY=your_infura_api_key
 
 # WalletConnect Project ID（可选）
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id

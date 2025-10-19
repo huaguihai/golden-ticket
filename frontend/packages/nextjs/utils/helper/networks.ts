@@ -42,6 +42,13 @@ export const getAlchemyHttpUrl = (chainId: number) => {
     : undefined;
 };
 
+export const getInfuraHttpUrl = (chainId: number) => {
+  const infuraApiKey = process.env.NEXT_PUBLIC_INFURA_API_KEY;
+  return infuraApiKey && RPC_CHAIN_NAMES[chainId]
+    ? `https://${RPC_CHAIN_NAMES[chainId]}.infura.io/v3/${infuraApiKey}`
+    : undefined;
+};
+
 export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.hardhat.id]: {
     color: "#b8af0c",
