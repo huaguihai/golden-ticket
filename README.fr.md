@@ -75,6 +75,24 @@ Golden Ticket permet aux utilisateurs de **prouver qu'ils répondent aux exigenc
 
 ---
 
+## 🚀 Déployer sur Vercel
+
+Déployez votre propre instance de Golden Ticket en un clic :
+
+<div align="center">
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/huaguihai/golden-ticket&project-name=golden-ticket&repository-name=golden-ticket&root-directory=frontend/packages/nextjs)
+
+**Déploiement rapide en moins de 5 minutes ! Aucune configuration requise.**
+
+</div>
+
+> 💡 **Note** : L'application fonctionnera avec des points de terminaison RPC publics. Pour une utilisation en production, ajoutez vos propres clés de fournisseur RPC dans les variables d'environnement Vercel.
+
+Pour des instructions de déploiement détaillées, voir [DEPLOY_TO_VERCEL.md](./DEPLOY_TO_VERCEL.md).
+
+---
+
 ## 🚀 Démarrage rapide
 
 ### Prérequis

@@ -75,6 +75,24 @@ Golden Ticket 允许用户使用全同态加密（FHE）**在不暴露实际余�
 
 ---
 
+## 🚀 一键部署到 Vercel
+
+一键部署你自己的 Golden Ticket 实例：
+
+<div align="center">
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/huaguihai/golden-ticket&project-name=golden-ticket&repository-name=golden-ticket&root-directory=frontend/packages/nextjs)
+
+**5 分钟内快速部署！无需配置。**
+
+</div>
+
+> 💡 **提示**：应用将使用公共 RPC 端点。生产环境使用时，建议在 Vercel 环境变量中添加你自己的 RPC 提供商密钥。
+
+详细部署说明请查看 [DEPLOY_TO_VERCEL.md](./DEPLOY_TO_VERCEL.md)。
+
+---
+
 ## 🚀 快速开始
 
 ### 前置要求
