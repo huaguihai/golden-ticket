@@ -14,6 +14,10 @@ const SEPOLIA_CONFIG = {
   kmsContractAddress: "0x1364cBBf2cDF5032C47d8226a6f6FBD2AFCDacAC",
 } as const;
 
+// Option to use proxy for network-restricted environments
+const USE_PROXY = process.env.NEXT_PUBLIC_USE_FHE_PROXY === "true";
+const PROXY_GATEWAY_URL = typeof window !== "undefined" ? `${window.location.origin}/api/fhe-gateway` : "";
+
 /**
  * Gets or creates the FHEVM instance
  * Uses window.ethereum directly as fhevmjs expects an EIP-1193 provider
@@ -44,11 +48,16 @@ export async function getFhevmInstance(chainId: number): Promise<FhevmInstance> 
       // Initialize WASM modules
       await initFhevm({ base: '/fhevmjs/' });
 
+      // Use proxy if enabled, otherwise use direct gateway
+      const gatewayUrl = USE_PROXY ? PROXY_GATEWAY_URL : SEPOLIA_CONFIG.gatewayUrl;
+
+      console.log(`[FHE] Using gateway: ${USE_PROXY ? "Proxy" : "Direct"} - ${gatewayUrl}`);
+
       // Create FHEVM instance with window.ethereum directly
       const instance = await createInstance({
         chainId: SEPOLIA_CONFIG.chainId,
         network: window.ethereum, // fhevmjs expects window.ethereum (EIP-1193)
-        gatewayUrl: SEPOLIA_CONFIG.gatewayUrl,
+        gatewayUrl,
         aclContractAddress: SEPOLIA_CONFIG.aclContractAddress,
         kmsContractAddress: SEPOLIA_CONFIG.kmsContractAddress,
       });
