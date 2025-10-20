@@ -16,7 +16,7 @@ const SEPOLIA_CONFIG = {
 
 // Option to use proxy for network-restricted environments
 const USE_PROXY = process.env.NEXT_PUBLIC_USE_FHE_PROXY === "true";
-const PROXY_GATEWAY_URL = typeof window !== "undefined" ? `${window.location.origin}/api/fhe-gateway` : "";
+const PROXY_GATEWAY_URL = typeof window !== "undefined" ? `${window.location.origin}/api/fhe-gateway?path=` : "";
 
 /**
  * Gets or creates the FHEVM instance
