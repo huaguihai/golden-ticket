@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Ticket background -->
+  <rect x="10" y="25" width="80" height="50" rx="5" fill="url(#goldGradient)" stroke="#B8860B" stroke-width="2"/>
+  
+  <!-- Ticket notches -->
+  <circle cx="10" cy="50" r="5" fill="#000"/>
+  <circle cx="90" cy="50" r="5" fill="#000"/>
+  
+  <!-- "GT" text -->
+  <text x="50" y="58" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000" text-anchor="middle">GT</text>
+  
+  <!-- Decorative stars -->
+  <text x="25" y="45" font-size="12" fill="#FFF">★</text>
+  <text x="75" y="45" font-size="12" fill="#FFF">★</text>
+</svg>
