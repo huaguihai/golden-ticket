@@ -37,8 +37,8 @@ export const Balance = ({ address, className = "" }: BalanceProps) => {
 
   if (isError) {
     return (
-      <div className="border-2 border-base-content/30 rounded-md px-2 flex flex-col items-center max-w-fit cursor-pointer">
-        <div className="text-warning">Error</div>
+      <div className="border-2 border-slate-500/30 rounded-md px-2 flex flex-col items-center max-w-fit cursor-pointer">
+        <div className="text-amber-500">Error</div>
       </div>
     );
   }
@@ -46,7 +46,7 @@ export const Balance = ({ address, className = "" }: BalanceProps) => {
   const formattedBalance = balance ? Number(formatEther(balance.value)) : 0;
 
   return (
-    <div className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}>
+    <div className={`flex flex-col font-normal items-center ${className}`}>
       <div className="w-full flex items-center justify-center">
         <>
           <span>{formattedBalance.toFixed(4)}</span>

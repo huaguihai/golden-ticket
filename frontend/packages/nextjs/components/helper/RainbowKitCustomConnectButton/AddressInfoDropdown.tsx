@@ -33,34 +33,38 @@ export const AddressInfoDropdown = ({ address, ensAvatar, displayName }: Address
 
   return (
     <>
-      <details ref={dropdownRef} className="dropdown dropdown-end leading-3">
-        <summary className="btn btn-secondary btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 h-auto!">
+      <details ref={dropdownRef} className="relative leading-3">
+        <summary className="flex items-center gap-2 bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 border border-slate-600 rounded-lg px-3 py-2 cursor-pointer transition-all duration-200 shadow-lg list-none">
           <BlockieAvatar address={checkSumAddress} size={30} ensImage={ensAvatar} />
-          <span className="ml-2 mr-1">{displayName}</span>
-          <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
+          <span className="ml-1 mr-1 text-white font-medium">{displayName}</span>
+          <ChevronDownIcon className="h-5 w-4 ml-1 text-slate-300" />
         </summary>
-        <ul className="dropdown-content menu z-2 p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1">
-          <NetworkOptions hidden={!selectingNetwork} />
+        <ul className="absolute right-0 mt-2 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-2xl z-50 overflow-hidden">
+          <div className={selectingNetwork ? "block" : "hidden"}>
+            <NetworkOptions hidden={!selectingNetwork} />
+          </div>
           {allowedNetworks.length > 1 ? (
-            <li className={selectingNetwork ? "hidden" : ""}>
+            <li className={selectingNetwork ? "hidden" : "block"}>
               <button
-                className="h-8 btn-sm rounded-xl! flex gap-3 py-3"
+                className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-slate-700 transition-colors duration-200 border-b border-slate-700/50"
                 type="button"
                 onClick={() => {
                   setSelectingNetwork(true);
                 }}
               >
-                <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Switch Network</span>
+                <ArrowsRightLeftIcon className="h-5 w-5 text-cyan-400" />
+                <span>Switch Network</span>
               </button>
             </li>
           ) : null}
-          <li className={selectingNetwork ? "hidden" : ""}>
+          <li className={selectingNetwork ? "hidden" : "block"}>
             <button
-              className="menu-item text-error h-8 btn-sm rounded-xl! flex gap-3 py-3"
+              className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-slate-700 transition-colors duration-200"
               type="button"
               onClick={() => disconnect()}
             >
-              <ArrowLeftIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
+              <ArrowLeftIcon className="h-5 w-5" />
+              <span>Disconnect</span>
             </button>
           </li>
         </ul>

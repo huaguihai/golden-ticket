@@ -17,15 +17,15 @@ export const NetworkOptions = ({ hidden = false }: NetworkOptionsProps) => {
       {allowedNetworks
         .filter(allowedNetwork => allowedNetwork.id !== chain?.id)
         .map(allowedNetwork => (
-          <li key={allowedNetwork.id} className={hidden ? "hidden" : ""}>
+          <li key={allowedNetwork.id} className={hidden ? "hidden" : "block"}>
             <button
-              className="menu-item btn-sm rounded-xl! flex gap-3 py-3 whitespace-nowrap"
+              className="w-full flex items-center gap-3 px-4 py-3 text-white hover:bg-slate-700 transition-colors duration-200 border-b border-slate-700/50"
               type="button"
               onClick={() => {
                 switchChain?.({ chainId: allowedNetwork.id });
               }}
             >
-              <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <ArrowsRightLeftIcon className="h-5 w-5 text-cyan-400" />
               <span>Switch to {allowedNetwork.name}</span>
             </button>
           </li>

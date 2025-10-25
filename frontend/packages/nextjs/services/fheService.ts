@@ -9,14 +9,16 @@ let fhevmInstancePromise: Promise<FhevmInstance> | null = null;
 // Sepolia FHEVM configuration
 const SEPOLIA_CONFIG = {
   chainId: 11155111,
+  networkUrl: "https://sepolia.public.blastapi.io",
   gatewayUrl: "https://gateway.sepolia.zama.ai",
+  relayerUrl: "https://relayer.testnet.zama.cloud",
   aclContractAddress: "0x687820221192C5B662b25367F70076A37bc79b6c",
   kmsContractAddress: "0x1364cBBf2cDF5032C47d8226a6f6FBD2AFCDacAC",
 } as const;
 
 // Option to use proxy for network-restricted environments
 const USE_PROXY = process.env.NEXT_PUBLIC_USE_FHE_PROXY === "true";
-const PROXY_GATEWAY_URL = typeof window !== "undefined" ? `${window.location.origin}/api/fhe-gateway` : "";
+const PROXY_GATEWAY_URL = typeof window !== "undefined" ? `${window.location.origin}/api/fhe-gateway/` : "";
 
 /**
  * Gets or creates the FHEVM instance
@@ -53,11 +55,13 @@ export async function getFhevmInstance(chainId: number): Promise<FhevmInstance> 
 
       console.log(`[FHE] Using gateway: ${USE_PROXY ? "Proxy" : "Direct"} - ${gatewayUrl}`);
 
-      // Create FHEVM instance with window.ethereum directly
+      // Create FHEVM instance with complete configuration
       const instance = await createInstance({
         chainId: SEPOLIA_CONFIG.chainId,
         network: window.ethereum, // fhevmjs expects window.ethereum (EIP-1193)
+        networkUrl: SEPOLIA_CONFIG.networkUrl,
         gatewayUrl,
+        relayerUrl: SEPOLIA_CONFIG.relayerUrl,
         aclContractAddress: SEPOLIA_CONFIG.aclContractAddress,
         kmsContractAddress: SEPOLIA_CONFIG.kmsContractAddress,
       });

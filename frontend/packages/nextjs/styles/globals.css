@@ -1,27 +1,10 @@
+@import '@rainbow-me/rainbowkit/styles.css';
 @import "tailwindcss";
 
-/* RainbowKit custom styles - override default positioning */
+/* RainbowKit custom styles */
 [data-rk] {
   --rk-radii-modal: 16px;
   --rk-radii-actionButton: 12px;
   --rk-radii-connectButton: 12px;
   --rk-radii-menuButton: 12px;
-}
-
-/* Force RainbowKit modal container to be centered */
-div[data-rk] > div[style*="position"] {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* Force RainbowKit modal dialog to center */
-div[role="dialog"] {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-  margin: auto !important;
 }
